@@ -25,6 +25,9 @@ class PetsController < ApplicationController
 
   # GET /pets/1
   def show
+    if request.env["HTTP_ACCEPT"].include?("json")
+      render json: @pet
+    end
   end
 
   # GET /pets/new
