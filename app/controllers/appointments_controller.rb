@@ -8,8 +8,8 @@ class AppointmentsController < ApplicationController
 
   # GET /appointments/current
   def current
-    @appointments = Appointment.all
-    render json: @appointments
+    @appointments = Appointment.all.includes(:pet)
+    render json: @appointments, include: [:pet], except: [:pet_id]
   end
 
   # GET /appointments/1
